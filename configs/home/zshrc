@@ -1,0 +1,69 @@
+HISTFILE=~/.zshist
+HISTSIZE=1000
+SAVEHIST=5000
+
+###autocomplete
+source ~/Documents/Scripts/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+unsetopt autocd beep
+zstyle :compinstall filename '/home/zoey/.zshrc'
+#autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+
+# history
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+#bindkey -v
+bindkey "^[[2~" overwrite-mode # Ins
+bindkey "^[[3~" delete-char # Del
+bindkey "^[[5~" beginning-of-history #PageUp
+bindkey "^[[6~" end-of-history #PageDown
+
+### ctrl+arrows
+bindkey "\e[1;5C" forward-word
+bindkey "\e[1;5D" backward-word
+
+### ctrl+delete
+bindkey "\e[3;5~" kill-word
+
+### ctrl+backspace
+bindkey '^H' backward-kill-word
+
+# random
+
+################# LOOKS #####################
+
+
+# prompt
+autoload -Uz promptinit && promptinit
+
+PROMPT='🐰%F{204}%n%f%F{161}@%f%m %F{096}%~%f %F{204}❀%f '
+
+
+################ ALIASES ####################
+
+# ssh
+alias lappy='ssh zoopy@192.168.0.56'
+alias janedoe='ssh jane\ doe@192.168.122.47'
+
+# QEMU
+alias screamloop='sh ~/Documents/Scripts/screamloop.sh'
+
+alias attachm='sudo sh ~/Documents/Scripts/attachmain.sh'
+alias attachs='sudo sh ~/Documents/Scripts/attachsecondary.sh'
+
+alias govp='sudo sh ~/Documents/Scripts/perfgov.sh'
+alias govs='sudo sh ~/Documents/Scripts/schedutilgov.sh'
+
+# random
+alias animemovies='cd /mnt/Pyon/Videos/Anime\ Movies/ && ls'
+alias anime='cd /mnt/Pyon/Videos/Anime && ls'
+alias piperestart='systemctl --user restart --now pipewire-media-session.service'
+alias sb='cd ~/Documents/Sawabot/ && sh Sawabot.sh'
+
+alias drp='echo 1 | sudo tee /proc/sys/vm/drop_caches'

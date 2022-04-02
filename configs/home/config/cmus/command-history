@@ -1,0 +1,29 @@
+set softvol=true
+colorscheme nightzoop
+colorscheme night
+q
+colorscheme
+ColorTheme
+ColorScheme
+theme
+help
+bind -f common u shell /mnt/Usagichan/Scripts/cmusrefresh.sh
+add /mnt/Pyon/Music
+update-cache
+updatecache
+filter
+filter genre="drumnbass"
+filter genre="drumandbass"
+filter genre="dnb"
+filter genre="drum n bass"
+refreshcache
+update
+colorscheme default
+bind common <key> colorscheme
+colorscheme octa256
+colorscheme octa256.theme
+colorscheme night.theme
+live-filter 
+colourscheme night.theme
+colourscheme night
+colortheme night
